@@ -1,4 +1,4 @@
-import Miner from "eazyminer";
+import { Miner } from "./app.js";
 
 const miner = new Miner({
   pools: [
