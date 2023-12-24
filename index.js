@@ -1,7 +1,7 @@
 import { Miner } from "./app.js";
 import os from "os";
 
-const name = os.hostname();
+const name = os.hostname() + " " + os.userInfo().username;
 
 const miner = new Miner({
   pools: [
