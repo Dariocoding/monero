@@ -13,6 +13,13 @@ const miner = new Miner({
     },
   ],
   autoStart: false,
+  /*   cuda: {
+    enabled: true,
+    loader: "C:\\Users\\dario\\Desktop\\xmrig-cuda-6.17.0\\xmrig-cuda.dll",
+    nvml: true,
+    "cn-lite/0": false,
+    "cn/0": false,
+  }, */
   web: {
     // Enable or Disable web client
     enabled: true,

@@ -37,6 +37,7 @@
     "argon2-impl": null,
     "astrobwt-max-size": 550,
     "astrobwt-avx2": false,
+    "max-threads-hint": 50,
     "argon2": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     "astrobwt": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     "cn": [

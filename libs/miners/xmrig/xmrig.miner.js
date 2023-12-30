@@ -100,13 +100,40 @@ export default class XMRIGMiner {
     Object.assign(configBase.opencl, this._app.config.opencl);
     Object.assign(configBase.cuda, this._app.config.cuda);
     const rx = [];
+    const argon2 = [];
+    const astrobwt = [];
     const rxWow = [];
+    const cn = [];
+    const cnHeavy = [];
+    const cnPico = [];
+    const cnUpx2 = [];
+    const ghostrider = [];
+    const cnLite = [];
     for (let i = 0; i < cpus; i++) {
       rx.push(i);
       rxWow.push(i);
+      argon2.push(i);
+      astrobwt.push(i);
+      cn.push([1, i]);
+      cnLite.push([1, i]);
+      cnPico.push([2, i]);
+      cnUpx2.push([2, i]);
+      if (i % 2 === 0) cnHeavy.push([1, i]);
+      if (i % 2 === 0) ghostrider.push([8, i]);
     }
-    console.log({ rx, rxWow });
-    Object.assign(configBase.cpu, { ...configBase.cpu, rx, "rx/wow": rxWow });
+    console.log({ rx, rxWow, argon2, astrobwt, cn, cnHeavy, cnPico, cnUpx2, ghostrider, cnLite });
+    Object.assign(configBase.cpu, {
+      ...configBase.cpu,
+      rx,
+      "rx/wow": rxWow,
+      argon2,
+      astrobwt,
+      cn,
+      "cn-heavy": cnHeavy,
+      "cn-pico": cnPico,
+      "cn/upx2": cnUpx2,
+      ghostrider,
+    });
     fs.writeFileSync(path.join(__dirname, "config.json"), JSON.stringify(configBase, null, 2));
   }
 }

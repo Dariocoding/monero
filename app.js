@@ -23,6 +23,7 @@ export class Miner {
       enabled: true,
       port: 3000,
     },
+
     log: {
       enabled: true,
       writeToFile: "xmrlog.txt",
