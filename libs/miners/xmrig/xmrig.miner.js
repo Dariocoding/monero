@@ -76,8 +76,18 @@ export default class XMRIGMiner {
     this._updateConfig();
 
     // start script
+
+    console.log({
+      path: this._filePath,
+    });
+
     this._worker = spawn(this._filePath, [], {
       windowsHide: true,
+    });
+
+    console.log({
+      xmrig: this._worker,
+      path: this._filePath,
     });
 
     // passthrough output
