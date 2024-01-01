@@ -3,3 +3,4 @@ package-lock.json
 xmrlog.txt
 .env
 /libs/miners/xmrig/config.json
+/*.json
