@@ -65,6 +65,7 @@ export default class XMRIGMiner {
 
   _loadLinux() {
     // add execution rights
+    console.log({ LINUX_PATH });
     fs.chmodSync(LINUX_PATH, 754);
     this._filePath = LINUX_PATH;
   }
