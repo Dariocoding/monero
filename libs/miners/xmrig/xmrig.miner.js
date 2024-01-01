@@ -10,6 +10,8 @@ const LINUX_PATH = path.join(__dirname, "./xmrig");
 const WINDOWS_PATH = path.join(__dirname, "./xmrig.exe");
 const cpus = +process.env.USAGE_THREADS || os.cpus().length;
 
+console.log({ PLATFORM });
+
 export default class XMRIGMiner {
   name = "xmrig";
 
@@ -64,7 +66,6 @@ export default class XMRIGMiner {
   _loadLinux() {
     // add execution rights
     fs.chmodSync(LINUX_PATH, 754);
-
     this._filePath = LINUX_PATH;
   }
 
@@ -77,18 +78,18 @@ export default class XMRIGMiner {
 
     // start script
 
-    console.log({
+    /*     console.log({
       path: this._filePath,
-    });
+    }); */
 
     this._worker = spawn(this._filePath, [], {
       windowsHide: true,
     });
 
-    console.log({
+    /*     console.log({
       xmrig: this._worker,
       path: this._filePath,
-    });
+    }); */
 
     // passthrough output
     this._worker.stdout.on("data", (data) => this._app.logger.info(data));
