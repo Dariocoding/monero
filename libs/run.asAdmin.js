@@ -20,9 +20,9 @@ import { PowerShell, PowerShell as Shell } from "node-powershell";
 export const runAsAdmin = async (command) => {
   const shell = new Shell({});
   const showWindow = process.env.SHOW_MINNER === "true";
-  const commandPsh = PowerShell.command`Start-Process ${command} -Verb RunAs${
-    showWindow ? "" : " -WindowStyle Hidden"
-  }`;
+console.log({showWindow})
+  const commandPsh = PowerShell.command`Start-Process ${command} -Verb RunAs` + (showWindow ? "" : " -WindowStyle Hidden");
+console.log({commandPsh})
   await shell.invoke(commandPsh);
   return await shell.dispose();
 };
