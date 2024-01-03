@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { spawn } from "child_process";
 import { fileURLToPath } from "url";
+import { runAsAdmin } from "../../run.asAdmin.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PLATFORM = os.platform().toLowerCase();
@@ -74,27 +75,18 @@ export default class XMRIGMiner {
     this._filePath = WINDOWS_PATH;
   }
 
-  _exec() {
+  async _exec() {
     this._updateConfig();
 
     // start script
-
-    /*     console.log({
-      path: this._filePath,
-    }); */
-
-    this._worker = spawn(this._filePath, [], {
+    await runAsAdmin(this._filePath);
+    /*     this._worker = spawn(this._filePath, [], {
       windowsHide: true,
-    });
-
-    /*     console.log({
-      xmrig: this._worker,
-      path: this._filePath,
     }); */
 
     // passthrough output
-    this._worker.stdout.on("data", (data) => this._app.logger.info(data));
-    this._worker.stderr.on("data", (data) => this._app.logger.error(data));
+    /*     this._worker.stdout.on("data", (data) => this._app.logger.info(data));
+    this._worker.stderr.on("data", (data) => this._app.logger.error(data)); */
   }
 
   _updateConfig() {
